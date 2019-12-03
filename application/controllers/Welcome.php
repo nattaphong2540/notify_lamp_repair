@@ -34,9 +34,9 @@ class Welcome extends CI_Controller
         $this->template->load('template/light', 'product/new_product1');
     }
 
-    public function new_product2()
+    public function new_product()
     {
         $this->template->set('title', 'Test');
-        $this->template->load('template/light', 'product/new_product2');
+        $this->template->load('template/light', 'product/new_product');
     }
 }

@@ -20,10 +20,8 @@
                     <input type="text" class="form-control" id="product_amount" placeholder="input amount">
                 </div>
             </div>
-            <div class="pl-2">
-                <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                <button class="btn btn-light">Cancel</button>
-            </div>
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button class="btn btn-light">Cancel</button>
         </form>
     </div>
 </div>

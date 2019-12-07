@@ -13,4 +13,12 @@ class Product_model extends CI_Model
 
         return true;
     }
+
+
+    public function get_all_product()
+    {
+        $query = $this->db->get('products');
+
+        return $query->result();
+    }
 }

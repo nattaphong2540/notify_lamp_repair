@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title><?= $title ?></title>
   <!-- plugins:css -->
-  <link rel="stylesheet"
-    href="<?= base_url('plugins/serein/') ?>vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="<?= base_url('plugins/serein/') ?>vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="<?= base_url('plugins/serein/') ?>vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="<?= base_url('plugins/serein/') ?>vendors/css/vendor.bundle.addons.css">
   <!-- endinject -->
@@ -36,10 +35,8 @@
     <!-- partial:../../partials/_navbar.html -->
     <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-        <a class="navbar-brand brand-logo" href="<?= base_url('/welcome') ?>"><img
-            src="<?= base_url('plugins/serein/') ?>images/logo.svg" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="<?= base_url('/customer') ?>"><img
-            src="<?= base_url('plugins/serein/') ?>images/logo-mini.svg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo" href="<?= base_url('/welcome') ?>"><img src="<?= base_url('plugins/serein/') ?>images/logo.svg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="<?= base_url('/customer') ?>"><img src="<?= base_url('plugins/serein/') ?>images/logo-mini.svg" alt="logo" /></a>
       </div>
       <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -64,8 +61,7 @@
             </div>
           </li>
         </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-          data-toggle="offcanvas">
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="mdi mdi-menu"></span>
         </button>
       </div>

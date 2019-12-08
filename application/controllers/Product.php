@@ -30,6 +30,19 @@ class Product extends CI_Controller
 
         $this->Product_model->insert_product($product_name, $product_price, $product_amount);
 
+        header('Location: show_product');
+        return true;
+    }
+
+    public function show_product()
+    {
+        $products = $this->Product_model->get_all_product();
+
+        $data = ['products' => $products];
+
+        $this->template->set('title', 'All Products');
+        $this->template->load('template/light', 'product/show_product', $data);
+
         return true;
     }
 }

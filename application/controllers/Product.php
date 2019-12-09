@@ -24,10 +24,10 @@ class Product extends CI_Controller
 
     public function new_product_form()
     {
-        $product_name = $this->input->post("product_name");
-        $product_price = $this->input->post("product_price");
-        $product_amount = $this->input->post("product_amount");
-
+        // $productData = $this->input->post("productDetails");
+        $product_name = $this->input->post("productName");
+        $product_price = $this->input->post("productPrice");
+        $product_amount = $this->input->post("productAmount");
         $this->Product_model->insert_product($product_name, $product_price, $product_amount);
 
         return true;

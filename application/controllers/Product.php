@@ -30,7 +30,7 @@ class Product extends CI_Controller
 
         $this->Product_model->insert_product($product_name, $product_price, $product_amount);
 
-        header('Location: show_product');
+        //header('Location: show_product');
         return true;
     }
 

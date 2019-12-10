@@ -10,6 +10,8 @@
                         <div class="text-center">
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newProductModal">Add Product</button>
                         </div>
+
+                        <!-- start modal add form     -->
                         <div class="modal fade" id="newProductModal" tabindex="-1" role="dialog" aria-labelledby="newProductModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
@@ -48,6 +50,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- end modal add form     -->
 
                         <!-- start modal edit form     -->
                         <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel" aria-hidden="true">
@@ -91,6 +94,32 @@
                         </div>
                         <!-- end modal edit form     -->
 
+                        <!-- start modal delete form     -->
+                        <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModalLabel-2" aria-hidden="true">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteProductModalLabel-2">Delete Product</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>You want to dalete data of product</p>
+                                        <p>ID: <output type="number" id="delete_product_id" name="product_name"></p>
+                                        <p>Name: <output type="text" id="delete_product_name" name="product_name"></p>
+                                        <p>Price: <output type="number" id="delete_product_price" name="product_price"></p>
+                                        <p>Amount: <output type="number" id="delete_product_amount" name="product_amount"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-success" id="submitDelete_product" onclick="submitDelete_product()">Submit</button>
+                                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end modal delete form     -->
+
                     </div>
                 </div>
                 <p class="card-description">
@@ -104,7 +133,8 @@
                                 <th>name</th>
                                 <th>price</th>
                                 <th>amount</th>
-                                <th>action</th>
+                                <th>action edit</th>
+                                <th>action delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -117,6 +147,7 @@
                                     <td><?= $product->price ?></td>
                                     <td><?= $product->amount ?></td>
                                     <td><button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editProductModal" onclick="edit_product(<?= $product->id ?>)">Edit</button></td>
+                                    <td><button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteProductModal" onclick="delete_product(<?= $product->id ?>)">Delete</button></td>
                                 </tr>
                             <?php
                             }
@@ -130,7 +161,44 @@
 </div>
 
 <script>
-    function edit_product(p_id) {
+    function submitDelete_product() {
+        var product_id = $("#delete_product_id").val();
+        var deleteProductDatas = {
+            product_id: product_id,
+        };
+        var showData = $.ajax({
+            type: 'POST',
+            url: "<?= site_url("/product/delete_product_form") ?>",
+            data: deleteProductDatas,
+            dataType: "text",
+            success: function(resultData) {
+                $('#deleteProductModal').modal('hide')
+                location.reload();
+            }
+        })
+    }
+
+    function delete_product(p_id) {
+        var product_id = {
+            p_id: p_id
+        }
+
+        var showData = $.ajax({
+            type: 'POST',
+            url: "<?= site_url("/product/show_product_editForm") ?>",
+            data: product_id,
+            dataType: "text",
+            success: function(resultData) {
+                productDetail = JSON.parse(resultData);
+                var product_id = $("#delete_product_id").val(productDetail.id);
+                var product_name = $("#delete_product_name").val(productDetail.name);
+                var product_price = $("#delete_product_price").val(productDetail.price);
+                var product_amount = $("#delete_product_amount").val(productDetail.amount);
+            }
+        })
+    }
+
+    function edit_product(p_id) { //show data of current product before update
         var product_id = {
             p_id: p_id
         }
@@ -169,10 +237,9 @@
             data: editProductDatas,
             dataType: "text",
             success: function(resultData) {
-                alert("Inserted");
-                $('#newProductModal').modal('hide')
+                alert("updated");
+                $('#editProductModal').modal('hide')
                 location.reload();
-
             }
         })
     }

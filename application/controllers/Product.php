@@ -49,11 +49,17 @@ class Product extends CI_Controller
         $product_name = $this->input->post("product_name");
         $product_price = $this->input->post("product_price");
         $product_amount = $this->input->post("product_amount");
-        var_dump($product_id);
+
         $this->Product_model->update_product($product_id, $product_name, $product_price, $product_amount);
 
         //header('Location: show_product');
         return true;
+    }
+
+    public function delete_product_form()
+    {
+        $product_id = $this->input->post("product_id");
+        $this->Product_model->delete_product($product_id);
     }
 
     public function show_product()

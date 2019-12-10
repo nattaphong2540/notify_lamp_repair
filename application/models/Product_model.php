@@ -34,10 +34,20 @@ class Product_model extends CI_Model
         return true;
     }
 
+    public function delete_product($id)
+    {
+        $data = array(
+            'id' => $id,
+            'status' => 'delete'
+        );
+        $this->db->where('id', $id);
+        $this->db->update('products', $data);
+    }
+
     public function get_all_product()
     {
 
-        $query = $this->db->get('products');
+        $query = $this->db->get_where('products', 'status != "delete"');
 
         return $query->result();
     }

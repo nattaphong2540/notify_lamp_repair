@@ -22,7 +22,7 @@ class User extends CI_Controller
         $this->template->load('template/light', 'user/show_user');
     }
 
-    public function get_all_users()
+    public function get_all_users() // Control get_all_user() and show user all
     {
         $users = $this->User_model->get_all_user();
         // success 
@@ -40,7 +40,7 @@ class User extends CI_Controller
         # code...
     }
 
-    public function new_user_form()
+    public function new_user_form() // Control insert_user() and Insert Function()
     {
         $Username = $this->input->post("Username");
         $Password = $this->input->post("Password");
@@ -53,7 +53,7 @@ class User extends CI_Controller
         return true;
     }
 
-    public function show_user_editForm()
+    public function show_user_editForm() // Control get_id_user() and edit_user()
     {
         $Uid = $this->input->post("uid");
         $users = $this->User_model->get_id_user($Uid);
@@ -62,7 +62,7 @@ class User extends CI_Controller
         return true;
     }
 
-    public function edit_user_form()
+    public function edit_user_form() // Control update_user() and update_user()
     {
         $Uid = $this->input->post("editUid");
         $Username = $this->input->post("editUsername");
@@ -76,7 +76,7 @@ class User extends CI_Controller
         return true;
     }
 
-    public function delete_user_form()
+    public function delete_user_form() // Control delete_user() and submitDeleteUser()
     {
         $Uid = $this->input->post("Uid");
         $this->User_model->delete_user($Uid);

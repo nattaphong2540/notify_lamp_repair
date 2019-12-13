@@ -159,6 +159,7 @@
 </div>
 
 <script>
+    // Show Data Function();
     $(document).ready(function() {
         $('#Users-table').DataTable({
             "ajax": {
@@ -201,7 +202,7 @@
         });
     });
 
-    // Insert Function();
+    // Insert Function(); <Start>
     function submit_user() {
         var Username = $("#Username").val();
         var Password = $("#Password").val();
@@ -228,7 +229,7 @@
             }
         })
     }
-
+    // Edit Function(); <Start>
     function edit_user(uid) { //show data of current product before update
         var user_id = {
             uid: uid
@@ -250,7 +251,7 @@
         })
     }
 
-    function update_user() {
+    function update_user() { // Updata data to Users table
         var editUid = $("#editUid").val();
         var editUsername = $("#editUsername").val();
         var editPassword = $("#editPassword").val();
@@ -277,7 +278,7 @@
             }
         })
     }
-
+    // Delete Function();
     function delete_user(uid) { //show data of current product before delete
         var user_id = {
             uid: uid
@@ -299,7 +300,7 @@
         })
     }
 
-    function submitDeleteUser() {
+    function submitDeleteUser() { // Sent Uid to Controller:/user/delete_user_form -> Model:User_model->delete_user for change 	delete_status='delete'
         var Uid = $("#deleteUserId").val();
         var deleteUserDatas = {
             Uid: Uid,

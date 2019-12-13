@@ -23,7 +23,7 @@ class User_model extends CI_Model
         return true;
     }
 
-    public function get_id_user($Uid)
+    public function get_id_user($Uid) // get_id_user() for sent data to show_user_editForm()
     {
         $query = $this->db->get_where('users', array('uid' => $Uid));
         return $query->row_array();

@@ -137,22 +137,6 @@
                                 <th>action delete</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php
-                            foreach ($products as $index => $product) {
-                                ?>
-                                <tr>
-                                    <td><?= ++$index ?></td>
-                                    <td><?= $product->name ?></td>
-                                    <td><?= $product->price ?></td>
-                                    <td><?= $product->amount ?></td>
-                                    <td><button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editProductModal" onclick="edit_product(<?= $product->id ?>)">Edit</button></td>
-                                    <td><button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteProductModal" onclick="delete_product(<?= $product->id ?>)">Delete</button></td>
-                                </tr>
-                            <?php
-                            }
-                            ?>
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -161,6 +145,45 @@
 </div>
 
 <script>
+    $(document).ready(function() {
+        $('#products-table').DataTable({
+            "ajax": {
+                "url": "<?php echo site_url("product/get_all_products") ?>",
+                "dataSrc": "data",
+            },
+            "columns": [{
+                    "data": "id"
+                },
+                {
+                    "data": "name"
+                },
+                {
+                    "data": "price"
+                },
+                {
+                    "data": "amount"
+                },
+            ],
+            "columnDefs": [{
+                    "targets": 4,
+                    "data": "id",
+                    "render": function(data, type, row, meta) {
+                        editButton = `<button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editProductModal" onclick="edit_product(${data})">Edit</button>`
+                        return editButton;
+                    },
+                },
+                {
+                    "targets": 5,
+                    "data": "id",
+                    "render": function(data, type, row, meta) {
+                        deleteButton = `<button type="button" class="btn btn-danger" id="deleteButton" data-toggle="modal" data-target="#deleteProductModal" onclick="delete_product(${data})">Delete</button>`
+                        return deleteButton;
+                    },
+                }
+            ]
+        });
+    });
+
     function submitDelete_product() {
         var product_id = $("#delete_product_id").val();
         var deleteProductDatas = {
@@ -271,7 +294,4 @@
             }
         })
     }
-    $(document).ready(function() {
-        $('#products-table').DataTable();
-    });
 </script>

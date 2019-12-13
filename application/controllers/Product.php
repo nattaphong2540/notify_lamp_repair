@@ -64,13 +64,24 @@ class Product extends CI_Controller
 
     public function show_product()
     {
-        $products = $this->Product_model->get_all_product();
-
-        $data = ['products' => $products];
-
         $this->template->set('title', 'All Products');
-        $this->template->load('template/light', 'product/show_product', $data);
-
-        return true;
+        $this->template->load('template/light', 'product/show_product');
+    }
+    public function get_all_products()
+    {
+        $products = $this->Product_model->get_all_product();
+        // success 
+        if ($products !== null) {
+            $return_datas['status'] = 1;
+            $return_datas['data'] = $products;
+        }
+        // fail 
+        else {
+            $return_datas['status'] = 0;
+            $return_datas['data'] = null;
+        }
+        // echo data
+        echo json_encode($return_datas);
+        # code...
     }
 }

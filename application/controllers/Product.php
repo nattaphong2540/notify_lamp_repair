@@ -8,6 +8,7 @@ class Product extends CI_Controller
     {
         parent::__construct();
         $this->load->library('template');
+        $this->load->library('session');
         $this->load->model('Product_model');
     }
 
@@ -18,8 +19,10 @@ class Product extends CI_Controller
     }
     public function new_product()
     {
+        $this->session->$_SESSION['TESTING'] = "A New Session";
+        $this->session->testing = "e yung wha";
         $this->template->set('title', 'Test');
-        $this->template->load('template/light', 'product/new_product');
+        $this->template->load('template/light', 'product/new_product', $_SESSION['TESTING']);
     }
 
     public function new_product_form()

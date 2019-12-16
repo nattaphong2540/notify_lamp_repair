@@ -31,15 +31,21 @@
                             </div>
                             <h4>New here?</h4>
                             <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
-                            <form class="pt-3">
+                            <form class="pt-3" id="signupForm" name="signupForm">
                                 <div class="form-group">
-                                    <input type="text" class="form-control form-control-lg" id="exampleInputUsername1" placeholder="Username">
+                                    <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Username">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Email">
+                                    <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
+                                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" id="firstname" name="firstname" placeholder="Password">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="form-control form-control-lg" id="lastname" name="lastname" placeholder="Password">
                                 </div>
                                 <div class="mb-4">
                                     <div class="form-check">
@@ -50,10 +56,11 @@
                                     </div>
                                 </div>
                                 <div class="mt-3">
-                                    <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="../../index.html">SIGN UP</a>
+                                    <input type="button" id="registerButton" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="Register!">
                                 </div>
                                 <div class="text-center mt-4 font-weight-light">
-                                    Already have an account? <a href="login.html" class="text-primary">Login</a>
+                                    Already have an account?
+                                    <!-- <a href="login.html">Login</a> -->
                                 </div>
                             </form>
                         </div>
@@ -76,6 +83,27 @@
     <script src="<?= base_url('plugins/serein/') ?>js/settings.js"></script>
     <script src="<?= base_url('plugins/serein/') ?>js/todolist.js"></script>
     <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="<?= base_url('plugins/serein/') ?>js/form-validation.js"></script>
+    <script src="<?= base_url('plugins/serein/') ?>js/bt-maxLength.js"></script>
+    <!-- End custom js for this page-->
+
 </body>
+<script>
+    $("#registerButton").click(function() {
+        username = $("#username").val();
+        email = $("#email").val();
+        password = $("#password").val();
+        firstname = $("#firstname").val();
+        lastname = $("#lastname").val();
+        if (username.length <= 0 || email.length <= 0 || password.length <= 0 || firstname.length <= 0 || lastname.length <= 0) {
+            target = document.getElementById("username").parentElement;
+            target.className += " has-danger";
+            target.innerHTML += `<label id="username-error" class="error mt-2 text-danger" for="email">Username Required, Please Fill out</label>`
+        } else {
+
+        }
+    });
+</script>
 
 </html>

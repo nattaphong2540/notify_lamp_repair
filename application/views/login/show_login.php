@@ -33,10 +33,10 @@
                             <h6 class="font-weight-light">Sign in to continue.</h6>
                             <form class="pt-3">
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-lg" id="InputEmail1" placeholder="Username">
+                                    <input type="text" class="form-control form-control-lg" id="InputUsername" placeholder="Username">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control form-control-lg" id="InputPassword1" placeholder="Password">
+                                    <input type="password" class="form-control form-control-lg" id="InputPassword" placeholder="Password">
                                 </div>
                                 <div class="mt-3">
                                     <button type="button" id="loginButton" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Login</button>
@@ -79,8 +79,8 @@
 </html>
 <script>
     $("#loginButton").click(function() {
-        var username = $("#InputEmail1").val();
-        var password = $("#InputPassword1").val();
+        var username = $("#InputUsername").val();
+        var password = $("#InputPassword").val();
         $.ajax({
             type: 'POST',
             url: "<?= site_url("/login/login") ?>",
@@ -103,19 +103,18 @@
     });
 
     // function signInButton() {
-    //     var Email = $("#InputEmail1").val();
-    //     var user_email = {
-    //         Email: Email
-    //     }
-
+    //     var Username = $("#InputUsername").val();
+    //     var Password = $("#InputPassword").val();
     //     var showData = $.ajax({
-    // type: 'POST',
-    // url: "<?= site_url("/login/show_user_editForm") ?>",
-    // data: user_email,
-    // dataType: "text",
-    // success: function(resultData) {
-    //     userDetail = JSON.parse(resultData);
-    // }
+    //         type: 'POST',
+    //         url: "<?= site_url("/login/show_user_editForm") ?>",
+    //         data: {
+    //             Username: Username,
+    //             Password: Password
+    //         },
+    //         dataType: "text",
+    //         success: function(resultData) {
+    //             userDetail = JSON.parse(resultData);
+    //         }
     //     })
-    // }
 </script>

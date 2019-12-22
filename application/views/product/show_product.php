@@ -4,95 +4,57 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-10">
-                        <h4 class="card-title">All Product</h4>
+                        <h4 class="card-title">All Product2</h4>
                     </div>
                     <div class="col-lg-2">
                         <div class="text-center">
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newProductModal">Add Product</button>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="new_product()">Add Product</button>
                         </div>
 
-                        <!-- start modal add form     -->
-                        <div class="modal fade" id="newProductModal" tabindex="-1" role="dialog" aria-labelledby="newProductModalLabel" aria-hidden="true">
+                        <!-- start modal add & edit form -->
+                        <div class="modal fade" id="ProductModal" tabindex="-1" role="dialog" aria-labelledby="ProductModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="newProductModalLabel">Add Product</h5>
+                                        <h5 class="modal-title" id="ProductModalLabel">Add Product</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="forms-sample" action="<?= site_url("/product/new_product_form") ?>" method="POST" id="addProductForm">
-                                            <div class="form-group row">
-                                                <label for="product_name" class="col-sm-3 col-form-label">Name</label>
-                                                <div class="col-sm-9">
-                                                    <input type="text" class="form-control" id="product_name" placeholder="input name" name="product_name">
+                                        <form class="forms-sample" method="POST" action="<?= site_url("/product/product_form") ?>" id="ProductForm">
+                                            <fieldset>
+                                                <div class="form-group row">
+                                                    <label for="product_name" class="col-sm-3 col-form-label">Name</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="hidden" class="form-control" id="product_id" name="id">
+                                                        <input type="text" class="form-control" id="product_name" placeholder="input name" name="name">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="product_price" class="col-sm-3 col-form-label">Price</label>
-                                                <div class="col-sm-9">
-                                                    <input type="number" class="form-control" id="product_price" placeholder="input price" name="product_price">
+                                                <div class="form-group row">
+                                                    <label for="product_price" class="col-sm-3 col-form-label">Price</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" class="form-control" id="product_price" placeholder="input price" name="price">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="product_amount" class="col-sm-3 col-form-label">Amount</label>
-                                                <div class="col-sm-9">
-                                                    <input type="number" class="form-control" id="product_amount" placeholder="input amount" name="product_amount">
+                                                <div class="form-group row">
+                                                    <label for="product_amount" class="col-sm-3 col-form-label">Amount</label>
+                                                    <div class="col-sm-9">
+                                                        <input type="number" class="form-control" id="product_amount" placeholder="input amount" name="amount">
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <input id="submit_type" name="submit_type" hidden>
+                                            </fieldset>
                                         </form>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-success" id="submitButton" onclick="submit_product()">Submit</button>
+                                        <button type="submit" class="btn btn-success" id="submitButton" form="ProductForm">Submit</button>
                                         <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- end modal add form     -->
-
-                        <!-- start modal edit form     -->
-                        <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="editProductModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form class="forms-sample" action="<?= site_url("/product/edit_product_form") ?>" method="POST" id="editProductForm">
-                                            <div class="form-group row">
-                                                <label for="product_name" class="col-sm-3 col-form-label">Name</label>
-                                                <div class="col-sm-9">
-                                                    <input type="hidden" class="form-control" id="edit_product_id" name="product_name">
-                                                    <input type="text" class="form-control" id="edit_product_name" name="product_name">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="product_price" class="col-sm-3 col-form-label">Price</label>
-                                                <div class="col-sm-9">
-                                                    <input type="number" class="form-control" id="edit_product_price" name="product_price">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="product_amount" class="col-sm-3 col-form-label">Amount</label>
-                                                <div class="col-sm-9">
-                                                    <input type="number" class="form-control" id="edit_product_amount" name="product_amount">
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-success" id="editButton" onclick="update_product()">Submit</button>
-                                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end modal edit form     -->
+                        <!-- end modal add & edit form -->
 
                         <!-- start modal delete form     -->
                         <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModalLabel-2" aria-hidden="true">
@@ -106,10 +68,10 @@
                                     </div>
                                     <div class="modal-body">
                                         <p>You want to dalete data of product</p>
-                                        <p>ID: <output type="number" id="delete_product_id" name="product_name"></p>
-                                        <p>Name: <output type="text" id="delete_product_name" name="product_name"></p>
-                                        <p>Price: <output type="number" id="delete_product_price" name="product_price"></p>
-                                        <p>Amount: <output type="number" id="delete_product_amount" name="product_amount"></p>
+                                        <p>ID: <output type="number" id="delete_product_id" name="id"></p>
+                                        <p>Name: <output type="text" id="delete_product_name" name="name"></p>
+                                        <p>Price: <output type="number" id="delete_product_price" name="price"></p>
+                                        <p>Amount: <output type="number" id="delete_product_amount" name="amount"></p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-success" id="submitDelete_product" onclick="submitDelete_product()">Submit</button>
@@ -168,7 +130,7 @@
                     "targets": 4,
                     "data": "id",
                     "render": function(data, type, row, meta) {
-                        editButton = `<button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#editProductModal" onclick="edit_product(${data})">Edit</button>`
+                        editButton = `<button type="button" class="btn btn-warning" id="editButton" data-toggle="modal" data-target="#ProductModal" onclick="edit_product(${data})">Edit</button>`
                         return editButton;
                     },
                 },
@@ -201,97 +163,45 @@
         })
     }
 
-    function delete_product(p_id) {
-        var product_id = {
-            p_id: p_id
-        }
-
+    function delete_product(id) {
         var showData = $.ajax({
             type: 'POST',
             url: "<?= site_url("/product/show_product_editForm") ?>",
-            data: product_id,
-            dataType: "text",
-            success: function(resultData) {
-                productDetail = JSON.parse(resultData);
-                var product_id = $("#delete_product_id").val(productDetail.id);
-                var product_name = $("#delete_product_name").val(productDetail.name);
-                var product_price = $("#delete_product_price").val(productDetail.price);
-                var product_amount = $("#delete_product_amount").val(productDetail.amount);
+            data: {
+                id
+            },
+            dataType: "json",
+            success: function(data) {
+                $("#delete_product_id").val(data['id']);
+                $("#delete_product_name").val(data['name']);
+                $("#delete_product_price").val(data['price']);
+                $("#delete_product_amount").val(data['amount']);
             }
-        })
+        });
     }
 
-    function edit_product(p_id) { //show data of current product before update
-        var product_id = {
-            p_id: p_id
-        }
+    function new_product() {
+        $('#ProductForm').trigger('reset');
+        $('#submit_type').val("new");
+        $('#ProductModal').modal('show');
+    }
 
+    function edit_product(id) { //show data of current product before update
+        $('#ProductForm').trigger('reset');
         var showData = $.ajax({
             type: 'POST',
             url: "<?= site_url("/product/show_product_editForm") ?>",
-            data: product_id,
-            dataType: "text",
-            success: function(resultData) {
-                productDetail = JSON.parse(resultData);
-                var product_id = $("#edit_product_id").val(productDetail.id);
-                var product_name = $("#edit_product_name").val(productDetail.name);
-                var product_price = $("#edit_product_price").val(productDetail.price);
-                var product_amount = $("#edit_product_amount").val(productDetail.amount);
+            data: {
+                id
+            },
+            dataType: "json",
+            success: function(data) {
+                $("#product_name").val(data['name']);
+                $("#product_price").val(data['price']);
+                $("#product_amount").val(data['amount']);
             }
-        })
-    }
-
-    function update_product() {
-        var product_id = $("#edit_product_id").val();
-        var product_name = $("#edit_product_name").val();
-        var product_price = $("#edit_product_price").val();
-        var product_amount = $("#edit_product_amount").val();
-
-        var editProductDatas = {
-            product_id: product_id,
-            product_name: product_name,
-            product_price: product_price,
-            product_amount: product_amount
-        };
-
-        var saveData = $.ajax({
-            type: 'POST',
-            url: "<?= site_url("/product/edit_product_form") ?>",
-            data: editProductDatas,
-            dataType: "text",
-            success: function(resultData) {
-                alert("updated");
-                $('#editProductModal').modal('hide')
-                location.reload();
-            }
-        })
-    }
-
-    function submit_product() {
-        var product_name = $("#product_name").val();
-        var product_price = $("#product_price").val();
-        var product_amount = $("#product_amount").val();
-
-        var productDatas = {
-            product_name: product_name,
-            product_price: product_price,
-            product_amount: product_amount
-        };
-
-        var saveData = $.ajax({
-            type: 'POST',
-            url: "<?= site_url("/product/new_product_form") ?>",
-            data: productDatas,
-            dataType: "text",
-            success: function(resultData) {
-                alert("Inserted");
-                $('#newProductModal').modal('hide')
-                $('#product_name').val('');
-                $('#product_price').val('');
-                $('#product_amount').val('');
-                location.reload();
-
-            }
-        })
+        });
+        $('#submit_type').val(id);
+        $('#ProductModal').modal('show');
     }
 </script>

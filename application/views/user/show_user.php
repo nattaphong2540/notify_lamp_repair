@@ -4,7 +4,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-10">
-                        <h4 class="card-title">All Users</h4>
+                        <h4 class="card-title">All Users2</h4>
                     </div>
                     <div class="col-lg-2">
                         <div class="text-center">

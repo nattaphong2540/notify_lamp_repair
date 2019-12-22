@@ -25,25 +25,42 @@ class Product extends CI_Controller
         $this->template->load('template/light', 'product/new_product', $_SESSION['TESTING']);
     }
 
-    public function new_product_form()
+    public function product_form()
     {
-        $product_name = $this->input->post("product_name");
-        $product_price = $this->input->post("product_price");
-        $product_amount = $this->input->post("product_amount");
-
-        $this->Product_model->insert_product($product_name, $product_price, $product_amount);
-
-        //header('Location: show_product');
-        return true;
+        $form = $this->input->post();
+        $data = [
+            "id" => $form["product_id"],
+            "name" => $form["product_name"],
+            "price" => $form["product_price"],
+            "amount" => $form["product_amount"]
+        ];
+        var_dump($form);
+        if ($form['submit_type'] === "new") {
+            unset($form['submit_type']);
+            if ($this->Product_model->insert_product($data)) {
+                $this->session->set_flashdata('status', 'success');
+            } else {
+                $this->session->flashdata('status', 'fail');
+            }
+        } else if ($form['submit_type'] !== "") {
+            $id = $form['submit_type'];
+            unset($form['submit_type']);
+            if ($this->Product_model->update_product($data, $id)) {
+                $this->session->set_flashdata('status', 'edited');
+            } else {
+                $this->session->flashdata('status', 'fail');
+            }
+        }
+        header('Location: show_product');
     }
 
     public function show_product_editForm()
     {
-        $product_id = $this->input->post("p_id");
-        $products = $this->Product_model->get_id_product($product_id);
-        echo json_encode($products);
-
-        return true;
+        $id = $this->input->post("id");
+        $data = $this->Product_model->get_id_product($id);
+        if (isset($data[0])) {
+            echo json_encode($data[0]);
+        }
     }
 
     public function edit_product_form()
@@ -67,7 +84,7 @@ class Product extends CI_Controller
 
     public function show_product()
     {
-        $this->template->set('title', 'All Products');
+        $this->template->set('title', 'All Products2');
         $this->template->load('template/light', 'product/show_product');
     }
     public function get_all_products()

@@ -101,20 +101,4 @@
             },
         })
     });
-
-    // function signInButton() {
-    //     var Username = $("#InputUsername").val();
-    //     var Password = $("#InputPassword").val();
-    //     var showData = $.ajax({
-    //         type: 'POST',
-    //         url: "<?= site_url("/login/show_user_editForm") ?>",
-    //         data: {
-    //             Username: Username,
-    //             Password: Password
-    //         },
-    //         dataType: "text",
-    //         success: function(resultData) {
-    //             userDetail = JSON.parse(resultData);
-    //         }
-    //     })
 </script>

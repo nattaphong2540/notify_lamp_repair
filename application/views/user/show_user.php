@@ -4,7 +4,11 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-lg-10">
+<<<<<<< HEAD
                         <h4 class="card-title">All Users2</h4>
+=======
+                        <h4 class="card-title">All Users</h4>
+>>>>>>> parent of 0e3b51d... Initial commit
                     </div>
                     <div class="col-lg-2">
                         <div class="text-center">

@@ -25,6 +25,7 @@ class Product extends CI_Controller
         $this->template->load('template/light', 'product/new_product', $_SESSION['TESTING']);
     }
 
+<<<<<<< HEAD
     public function product_form()
     {
         $form = $this->input->post();
@@ -52,15 +53,35 @@ class Product extends CI_Controller
             }
         }
         header('Location: show_product');
+=======
+    public function new_product_form()
+    {
+        $product_name = $this->input->post("product_name");
+        $product_price = $this->input->post("product_price");
+        $product_amount = $this->input->post("product_amount");
+
+        $this->Product_model->insert_product($product_name, $product_price, $product_amount);
+
+        //header('Location: show_product');
+        return true;
+>>>>>>> parent of 0e3b51d... Initial commit
     }
 
     public function show_product_editForm()
     {
+<<<<<<< HEAD
         $id = $this->input->post("id");
         $data = $this->Product_model->get_id_product($id);
         if (isset($data[0])) {
             echo json_encode($data[0]);
         }
+=======
+        $product_id = $this->input->post("p_id");
+        $products = $this->Product_model->get_id_product($product_id);
+        echo json_encode($products);
+
+        return true;
+>>>>>>> parent of 0e3b51d... Initial commit
     }
 
     public function edit_product_form()
@@ -84,7 +105,11 @@ class Product extends CI_Controller
 
     public function show_product()
     {
+<<<<<<< HEAD
         $this->template->set('title', 'All Products2');
+=======
+        $this->template->set('title', 'All Products');
+>>>>>>> parent of 0e3b51d... Initial commit
         $this->template->load('template/light', 'product/show_product');
     }
     public function get_all_products()

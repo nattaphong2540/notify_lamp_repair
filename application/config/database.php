@@ -79,7 +79,7 @@ if (ENVIRONMENT !== 'production') {
         'hostname' => 'localhost',
         'username' => 'root',
         'password' => '',
-        'database' => 'sportfield',
+        'database' => 'notify_lamp_repair',
         'dbdriver' => 'mysqli',
         'dbprefix' => '',
         'pconnect' => false,

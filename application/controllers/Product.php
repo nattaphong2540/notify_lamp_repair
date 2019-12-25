@@ -29,12 +29,11 @@ class Product extends CI_Controller
     {
         $form = $this->input->post();
         $data = [
-            "id" => $form["product_id"],
-            "name" => $form["product_name"],
-            "price" => $form["product_price"],
-            "amount" => $form["product_amount"]
+            //"id" => $form["id"],
+            "name" => $form["name"],
+            "price" => $form["price"],
+            "amount" => $form["amount"]
         ];
-        var_dump($form);
         if ($form['submit_type'] === "new") {
             unset($form['submit_type']);
             if ($this->Product_model->insert_product($data)) {

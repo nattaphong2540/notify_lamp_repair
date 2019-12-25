@@ -102,7 +102,6 @@
         })
     });
 
-
     // function signInButton() {
     //     var Username = $("#InputUsername").val();
     //     var Password = $("#InputPassword").val();

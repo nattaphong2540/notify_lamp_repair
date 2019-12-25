@@ -5,11 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<<<<<<< HEAD
     <title>Login2</title>
-=======
-    <title>Login</title>
->>>>>>> parent of 0e3b51d... Initial commit
     <!-- plugins:css -->
     <link rel="stylesheet" href="<?= base_url('plugins/serein/') ?>vendors/iconfonts/mdi/font/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="<?= base_url('plugins/serein/') ?>vendors/css/vendor.bundle.base.css">
@@ -105,7 +101,7 @@
             },
         })
     });
-<<<<<<< HEAD
+
 
     // function signInButton() {
     //     var Username = $("#InputUsername").val();
@@ -122,6 +118,4 @@
     //             userDetail = JSON.parse(resultData);
     //         }
     //     })
-=======
->>>>>>> parent of 0e3b51d... Initial commit
 </script>

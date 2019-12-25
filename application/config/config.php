@@ -24,11 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
  */
 if (ENVIRONMENT !== 'production') {
-<<<<<<< HEAD
     $bas_url = 'http://localhost/sportfield';
-=======
-    $bas_url = 'http://localhost/notify_lamp_repair_test';
->>>>>>> c8300b856847843fafded7af2ed65e6943ba0063
 } else {
     $bas_url = '';
 }

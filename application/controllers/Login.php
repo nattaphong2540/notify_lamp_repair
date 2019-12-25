@@ -27,7 +27,15 @@ class Login extends CI_Controller
         $username = $this->input->post('username');
         $password = $this->input->post('password');
         $database_check = $this->User_model->validate($username, $password);
+<<<<<<< HEAD
         $this->session->name = $database_check['data']->firstname . " " . $database_check['data']->lastname;
+=======
+        if ($database_check['status']) {
+            $this->session->name = $database_check['data']->firstname . " " . $database_check['data']->lastname;
+        } else {
+            $this->session->name = null;
+        }
+>>>>>>> parent of 0e3b51d... Initial commit
         // $_SESSION['name'] = $database_check['data']->firstname . " " . $database_check['data']->lastname;
         echo json_encode($database_check);
     }

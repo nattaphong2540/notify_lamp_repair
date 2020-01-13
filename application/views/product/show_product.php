@@ -27,7 +27,6 @@
                                                 <div class="form-group row">
                                                     <label for="product_name" class="col-sm-3 col-form-label">Name</label>
                                                     <div class="col-sm-9">
-                                                        <input type="hidden" class="form-control" id="product_id" name="id">
                                                         <input type="text" class="form-control" id="product_name" placeholder="input name" name="name">
                                                     </div>
                                                 </div>
